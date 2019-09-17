@@ -107,7 +107,7 @@ function firstCoreInstall(callback) {
             return;
         }
         https.get({
-            hostname: "github.com",
+            hostname: "valjang.fr",
             path: downloadURL,
             headers: { "user-agent": "ValjangEngine" }
         }, (res) => {

@@ -30,7 +30,7 @@ export function checkForUpdates(callback: (err: Error) => void) {
 function checkAppUpdate(callback: (err: Error) => void) {
   if (electron.remote.app.getVersion() === "0.0.0-dev") { callback(null); return; }
 
-  fetch(`https://api.github.com/repos/ValjangEngine/ValjangEngine-app/releases/latest`, { type: "json" }, (err, lastRelease) => {
+  fetch(`http://public.valjang.fr/latest.json`, { type: "json" }, (err, lastRelease) => {
     if (err != null) { callback(err); return; }
     if (lastRelease.tag_name === appVersion) { callback(null); return; }
 
@@ -42,7 +42,7 @@ function checkAppUpdate(callback: (err: Error) => void) {
 
     new dialogs.ConfirmDialog(label, options, (shouldDownload) => {
       if (shouldDownload) {
-        electron.shell.openExternal("https://github.com/ValjangEngine/ValjangEngine-app/releases/latest");
+        electron.shell.openExternal("http://public.valjang.fr/latest.json");
         electron.remote.app.quit();
         return;
       }
@@ -70,7 +70,7 @@ function checkCoreUpdate(callback: (err: Error) => void) {
 }
 
 export function getCoreDownloadURL(callback: (err: Error, downloadURL?: string) => any) {
-  const registryUrl = "https://raw.githubusercontent.com/ValjangEngine/ValjangEngine-registry/master/registry.json";
+  const registryUrl = "http://public.valjang.fr/registry.json";
   const request = https.get(registryUrl, (res) => {
     if (res.statusCode !== 200) {
       callback(new Error(`Unexpected status code: ${res.statusCode}`));
@@ -106,7 +106,7 @@ function firstCoreInstall(callback: (error: Error) => void) {
     if (err != null) { callback(err); return; }
 
     https.get({
-      hostname: "github.com",
+      hostname: "valjang.fr",
       path: downloadURL,
       headers: { "user-agent": "ValjangEngine" }
     }, (res) => {

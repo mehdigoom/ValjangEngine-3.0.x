@@ -31,8 +31,8 @@ packager({
     "app-bundle-id": "com.sparklinlabs.ValjangEngine",
     "app-version": publicPackage.version,
     "version-string": {
-        "CompanyName": "Sparklin Labs",
-        "LegalCopyright": `Copyright © 2014-${year} Sparklin Labs`,
+        "CompanyName": "Valjang",
+        "LegalCopyright": `Copyright © 2014-${year} Valjang`,
         "FileVersion": publicPackage.version,
         "FileDescription": "The HTML5 2D+3D game maker",
         "ProductName": "ValjangEngine",

@@ -1,39 +1,39 @@
 {
-  "activeLanguage": "Italiano",
+    "activeLanguage": "Italiano",
 
-  "none": "(Nessuno)",
+    "none": "(Nessuno)",
 
-  "actions": {
-    "cancel": "Annulla",
-    "clear": "Pulisci",
-    "close": "Chiudi",
-    "skip": "Salta",
-    "save": "Salva",
-    "download": "Scarica",
-    "install": "Installa",
-    "uninstall": "Disinstalla",
-    "open": "Apri",
-    "refresh": "Ricarica",
-    "update": "Aggiorna",
-    "show": "Mostra",
-    "hide": "Nascondi"
-  },
+    "actions": {
+        "cancel": "Annulla",
+        "clear": "Pulisci",
+        "close": "Chiudi",
+        "skip": "Salta",
+        "save": "Salva",
+        "download": "Scarica",
+        "install": "Installa",
+        "uninstall": "Disinstalla",
+        "open": "Apri",
+        "refresh": "Ricarica",
+        "update": "Aggiorna",
+        "show": "Mostra",
+        "hide": "Nascondi"
+    },
 
-  "states": {
-    "loading": "In caricamento..."
-  },
+    "states": {
+        "loading": "In caricamento..."
+    },
 
-  "server": {
-    "hostname": "Nome host",
-    "port": "Porta",
-    "label": "Etichetta",
+    "server": {
+        "hostname": "Nome host",
+        "port": "Porta",
+        "label": "Etichetta",
 
-    "connecting": "Collegamento a ${baseUrl}...",
-    "tryAgain": "Riprova",
-    "errors": {
-      "superpowersJSON": "Non è stato possibile scaricare ${baseUrl}/superpowers.json.",
-      "notSuperpowers": "Sembra che il server all'indirizzo ${baseUrl} non stia facendo girare Superpowers.",
-      "incompatibleVersion": "Il server all'indirizzo ${baseUrl} sta facendo girare una versione incompatibile di Superpowers (versione API ricevuta ${serverVersion}, prevista ${appVersion})."
+        "connecting": "Collegamento a ${baseUrl}...",
+        "tryAgain": "Riprova",
+        "errors": {
+            "ValjangEngineJSON": "Non è stato possibile scaricare ${baseUrl}/ValjangEngine.json.",
+            "notValjangEngine": "Sembra che il server all'indirizzo ${baseUrl} non stia facendo girare ValjangEngine.",
+            "incompatibleVersion": "Il server all'indirizzo ${baseUrl} sta facendo girare una versione incompatibile di ValjangEngine (versione API ricevuta ${serverVersion}, prevista ${appVersion})."
+        }
     }
-  }
 }

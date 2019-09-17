@@ -1,39 +1,39 @@
 {
-  "activeLanguage": "Deutsch",
+    "activeLanguage": "Deutsch",
 
-  "none": "(Nichts)",
+    "none": "(Nichts)",
 
-  "actions": {
-    "cancel": "Abbrechen",
-    "clear": "Leeren",
-    "close": "Schließen",
-    "skip": "Überspringen",
-    "save": "Speichern",
-    "download": "Download",
-    "install": "Installieren",
-    "uninstall": "Deinstallieren",
-    "open": "Öffnen",
-    "refresh": "Aktualisieren",
-    "update": "Updaten",
-    "show": "Zeigen",
-    "hide": "Verstecken"
-  },
+    "actions": {
+        "cancel": "Abbrechen",
+        "clear": "Leeren",
+        "close": "Schließen",
+        "skip": "Überspringen",
+        "save": "Speichern",
+        "download": "Download",
+        "install": "Installieren",
+        "uninstall": "Deinstallieren",
+        "open": "Öffnen",
+        "refresh": "Aktualisieren",
+        "update": "Updaten",
+        "show": "Zeigen",
+        "hide": "Verstecken"
+    },
 
-  "states": {
-    "loading": "Lade ..."
-  },
+    "states": {
+        "loading": "Lade ..."
+    },
 
-  "server": {
-    "hostname": "Hostname",
-    "port": "Port",
-    "label": "Label",
+    "server": {
+        "hostname": "Hostname",
+        "port": "Port",
+        "label": "Label",
 
-    "connecting": "Verbinde mit ${baseUrl}...",
-    "tryAgain": "Erneut versuchen",
-    "errors": {
-      "superpowersJSON": "${baseUrl}/superpowers.json konnte nicht heruntergeladen werden.",
-      "notSuperpowers": "Auf dem Server ${baseUrl} scheint keine Superpowers Instanz zu laufen.",
-      "incompatibleVersion": "Auf dem Server ${baseUrl} läuft eine inkompatible Version von Superpowers (App API Version ${serverVersion} gefunden, erwartet wird ${appVersion})."
+        "connecting": "Verbinde mit ${baseUrl}...",
+        "tryAgain": "Erneut versuchen",
+        "errors": {
+            "ValjangEngineJSON": "${baseUrl}/ValjangEngine.json konnte nicht heruntergeladen werden.",
+            "notValjangEngine": "Auf dem Server ${baseUrl} scheint keine ValjangEngine Instanz zu laufen.",
+            "incompatibleVersion": "Auf dem Server ${baseUrl} läuft eine inkompatible Version von ValjangEngine (App API Version ${serverVersion} gefunden, erwartet wird ${appVersion})."
+        }
     }
-  }
 }

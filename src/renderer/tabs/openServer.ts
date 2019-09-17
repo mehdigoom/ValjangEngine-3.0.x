@@ -6,7 +6,7 @@ import * as i18n from "../../shared/i18n";
 
 import { tabStrip, panesElt, clearActiveTab } from "./index";
 
-const { superpowers: { appApiVersion: appApiVersion } } = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, { encoding: "utf8" }));
+const { ValjangEngine: { appApiVersion: appApiVersion } } = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, { encoding: "utf8" }));
 
 export default function openServer(serverEntry: ServerEntry) {
   clearActiveTab();
@@ -95,22 +95,22 @@ function makeServerPane(serverEntry: ServerEntry) {
     let httpAuth = null;
 
     if (serverEntry.password.length > 0) {
-      httpAuth = { username: "superpowers", password: serverEntry.password };
+      httpAuth = { username: "ValjangEngine", password: serverEntry.password };
     }
 
-    fetch(`${baseUrl}/superpowers.json`, { type: "json", httpAuth }, onFetchJSON);
+    fetch(`${baseUrl}/ValjangEngine.json`, { type: "json", httpAuth }, onFetchJSON);
   }
 
   function onFetchJSON(err: FetchError, serverInfo: { version: string; appApiVersion: number; buildPort: number; }) {
     if (err != null) {
       if (err.status === 401) statusElt.textContent = i18n.t("common:server.errors.incorrectPassword", { baseUrl });
-      else statusElt.textContent = i18n.t("common:server.errors.superpowersJSON", { baseUrl });
+      else statusElt.textContent = i18n.t("common:server.errors.ValjangEngineJSON", { baseUrl });
       retryButton.hidden = false;
       return;
     }
 
     if (serverInfo == null || typeof serverInfo !== "object") {
-      statusElt.textContent = i18n.t("common:server.errors.notSuperpowers", { baseUrl });
+      statusElt.textContent = i18n.t("common:server.errors.notValjangEngine", { baseUrl });
       retryButton.hidden = false;
       return;
     }
@@ -148,7 +148,7 @@ function makeServerPane(serverEntry: ServerEntry) {
     webviewElt.focus();
 
     const buildHostnameAndPort = `${hostname}:${serverInfo.buildPort}`;
-    const auth = { username: "superpowers", password: serverEntry.password };
+    const auth = { username: "ValjangEngine", password: serverEntry.password };
     electron.ipcRenderer.send("set-http-auth", hostnameAndPort, auth);
     electron.ipcRenderer.send("set-http-auth", buildHostnameAndPort, auth);
   }

@@ -1,9 +1,9 @@
 {
-  "title": "Bem-vindo ao Superpowers!",
-  "prompt": "Superpowers permite que você colabore com pessoas ao redor do mundo.",
+    "title": "Bem-vindo ao ValjangEngine!",
+    "prompt": "ValjangEngine permite que você colabore com pessoas ao redor do mundo.",
 
-  "nickname": "Apelido",
-  "connectToChat": "Conectar ao chat da comunidade",
+    "nickname": "Apelido",
+    "connectToChat": "Conectar ao chat da comunidade",
 
-  "getStarted": "Começar!"
+    "getStarted": "Começar!"
 }

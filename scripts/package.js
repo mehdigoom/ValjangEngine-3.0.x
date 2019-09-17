@@ -20,49 +20,49 @@ const packager = require("electron-packager");
 const year = new Date().getFullYear();
 
 packager({
-  dir: "public",
-  name: "Superpowers",
-  platform: [ "linux", "win32","darwin" ],
-  arch: [ "ia32", "x64" ],
-  version: require(`${__dirname}/../node_modules/electron/package.json`).version,
-  out: "packages",
-  icon: "icons/superpowers",
-  asar: false,
-  "app-bundle-id": "com.sparklinlabs.superpowers",
-  "app-version": publicPackage.version,
-  "version-string": {
-    "CompanyName": "Sparklin Labs",
-    "LegalCopyright": `Copyright © 2014-${year} Sparklin Labs`,
-    "FileVersion": publicPackage.version,
-    "FileDescription": "The HTML5 2D+3D game maker",
-    "ProductName": "Superpowers",
-    "ProductVersion": publicPackage.version
-  }
-}).then((oldPaths) => {
-  const buildPaths = [];
-  for (const oldPath of oldPaths) {
-    const newPath = oldPath
-      .replace("Superpowers", `superpowers-v${publicPackage.version}`)
-      .replace("-darwin-", "-osx-")
-      .replace("-win32-", "-win-");
-    fs.renameSync(oldPath, newPath);
-    buildPaths.push(newPath);
-  }
-
-  for (let buildPath of buildPaths) {
-    const folderName = path.basename(buildPath);
-    console.log(`Generating archive for ${folderName}.`);
-    try {
-      execSync(`zip --symlinks -r ${folderName}.zip ${folderName}`, { cwd: `${__dirname}/../packages` });
-    } catch (err) {
-      console.error(err.stack);
+    dir: "public",
+    name: "ValjangEngine",
+    platform: ["linux", "win32", "darwin"],
+    arch: ["ia32", "x64"],
+    version: require(`${__dirname}/../node_modules/electron/package.json`).version,
+    out: "packages",
+    icon: "icons/superpowers",
+    asar: false,
+    "app-bundle-id": "com.sparklinlabs.ValjangEngine",
+    "app-version": publicPackage.version,
+    "version-string": {
+        "CompanyName": "Sparklin Labs",
+        "LegalCopyright": `Copyright © 2014-${year} Sparklin Labs`,
+        "FileVersion": publicPackage.version,
+        "FileDescription": "The HTML5 2D+3D game maker",
+        "ProductName": "ValjangEngine",
+        "ProductVersion": publicPackage.version
     }
-  }
+}).then((oldPaths) => {
+    const buildPaths = [];
+    for (const oldPath of oldPaths) {
+        const newPath = oldPath
+            .replace("ValjangEngine", `ValjangEngine-v${publicPackage.version}`)
+            .replace("-darwin-", "-osx-")
+            .replace("-win32-", "-win-");
+        fs.renameSync(oldPath, newPath);
+        buildPaths.push(newPath);
+    }
 
-  publicPackage.version = "0.0.0-dev";
-  delete publicPackage.dependencies;
-  fs.writeFileSync(`${__dirname}/../public/package.json`, JSON.stringify(publicPackage, null, 2) + "\n");
-  execSync("npm prune", { cwd: `${__dirname}/../public`, stdio: "inherit" });
+    for (let buildPath of buildPaths) {
+        const folderName = path.basename(buildPath);
+        console.log(`Generating archive for ${folderName}.`);
+        try {
+            execSync(`zip --symlinks -r ${folderName}.zip ${folderName}`, { cwd: `${__dirname}/../packages` });
+        } catch (err) {
+            console.error(err.stack);
+        }
+    }
 
-  console.log("Done.");
+    publicPackage.version = "0.0.0-dev";
+    delete publicPackage.dependencies;
+    fs.writeFileSync(`${__dirname}/../public/package.json`, JSON.stringify(publicPackage, null, 2) + "\n");
+    execSync("npm prune", { cwd: `${__dirname}/../public`, stdio: "inherit" });
+
+    console.log("Done.");
 });

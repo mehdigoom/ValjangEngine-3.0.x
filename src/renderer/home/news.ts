@@ -5,7 +5,7 @@ export function start() {
   let languageCode = i18n.languageCode;
 
   function fetchNews(callback: (err: Error, data: any) => void) {
-    fetch(`http://superpowers-html5.com/news.${languageCode}.html`, { type: "text" }, callback);
+    fetch(`http://ValjangEngine-html5.com/news.${languageCode}.html`, { type: "text" }, callback);
   }
 
   fetchNews((err, data) => {

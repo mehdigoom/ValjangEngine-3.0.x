@@ -87,9 +87,9 @@ function showWelcomeDialog(callback: Function) {
       settings.setNickname(result.nickname);
       settings.setPresence(result.connectToChat ? "online" : "offline");
 
-      settings.setSavedChatrooms(["#superpowers-html5"]);
+      settings.setSavedChatrooms(["#ValjangEngine-html5"]);
       if (i18n.languageCode !== "en" && chat.languageChatRooms.indexOf(i18n.languageCode) !== -1) {
-        settings.savedChatrooms.push(`#superpowers-html5-${i18n.languageCode}`);
+        settings.savedChatrooms.push(`#ValjangEngine-html5-${i18n.languageCode}`);
       }
     } else {
       settings.setNickname("Nickname");

@@ -99,7 +99,7 @@ namespace SupApp {
     if (options.resizable == null) options.resizable = true;
 
     const electronWindowOptions: Electron.BrowserWindowConstructorOptions = {
-      icon: `${__dirname}/../superpowers.ico`,
+      icon: `${__dirname}/../ValjangEngine.ico`,
       useContentSize: true, autoHideMenuBar: true,
       resizable: options.resizable,
       webPreferences: { nodeIntegration: false, preload: `${__dirname}/index.js` }
@@ -173,7 +173,7 @@ namespace SupApp {
   export function mktmpdir(callback: (err: any, path: string) => void) {
     let tempFolderPath: string;
     async.retry(10, (cb) => {
-      let folderName = "superpowers-temp-";
+      let folderName = "ValjangEngine-temp-";
       for (let i = 0; i < 16; i++) folderName += getRandomTmpCharacter();
       tempFolderPath = `${tmpRoot}/${folderName}`;
       fs.mkdir(tempFolderPath, cb);

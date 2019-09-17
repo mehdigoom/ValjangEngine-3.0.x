@@ -6,7 +6,7 @@ import { LocalizedError } from "./shared/i18n";
 
 const argv = yargs
   .usage("Usage: $0 [options]")
-  .describe("core-path", "Path to Superpowers core")
+  .describe("core-path", "Path to ValjangEngine core")
   .argv;
 
 export default function getPaths(callback: (err: LocalizedError, corePath?: string, dataPath?: string) => void) {
@@ -20,7 +20,7 @@ export default function getPaths(callback: (err: LocalizedError, corePath?: stri
   }
 
   try {
-    dataPath = path.join(electron.app.getPath("appData"), "Superpowers");
+    dataPath = path.join(electron.app.getPath("appData"), "ValjangEngine");
   } catch (err) {
     process.nextTick(() => { callback(new LocalizedError("startup:errors.couldNotGetDataPath", { details: err.message })); });
     return;
@@ -35,14 +35,14 @@ export default function getPaths(callback: (err: LocalizedError, corePath?: stri
 
     switch (process.platform) {
       case "win32":
-        if (process.env.APPDATA != null) oldDataPath = path.join(process.env.APPDATA, "Superpowers");
+        if (process.env.APPDATA != null) oldDataPath = path.join(process.env.APPDATA, "ValjangEngine");
         break;
       case "darwin":
-        if (process.env.HOME != null) oldDataPath = path.join(process.env.HOME, "Library", "Superpowers");
+        if (process.env.HOME != null) oldDataPath = path.join(process.env.HOME, "Library", "ValjangEngine");
         break;
       default:
-        if (process.env.XDG_DATA_HOME != null) oldDataPath = path.join(process.env.XDG_DATA_HOME, "Superpowers");
-        else if (process.env.HOME != null) oldDataPath = path.join(process.env.HOME, ".local/share", "Superpowers");
+        if (process.env.XDG_DATA_HOME != null) oldDataPath = path.join(process.env.XDG_DATA_HOME, "ValjangEngine");
+        else if (process.env.HOME != null) oldDataPath = path.join(process.env.HOME, ".local/share", "ValjangEngine");
     }
 
     if (oldDataPath != null && fs.existsSync(oldDataPath)) {

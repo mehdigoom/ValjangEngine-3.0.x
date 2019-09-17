@@ -1,37 +1,37 @@
 {
-  "activeLanguage": "Русский",
-  
-  "actions": {
-    "cancel": "Отменить",
-    "clear": "Очистить",
-    "close": "Закрыть",
-    "skip": "Пропустить",
-    "save": "Сохранить",
-    "download": "Скачать",
-    "install": "Установить",
-    "uninstall": "Удалить",
-    "open": "Открыть",
-    "refresh": "Обновить",
-    "update": "Обновить",
-    "show": "Показать",
-    "hide": "Скрыть"
-  },
+    "activeLanguage": "Русский",
 
-  "states": {
-    "loading": "Загрузка..."
-  },
+    "actions": {
+        "cancel": "Отменить",
+        "clear": "Очистить",
+        "close": "Закрыть",
+        "skip": "Пропустить",
+        "save": "Сохранить",
+        "download": "Скачать",
+        "install": "Установить",
+        "uninstall": "Удалить",
+        "open": "Открыть",
+        "refresh": "Обновить",
+        "update": "Обновить",
+        "show": "Показать",
+        "hide": "Скрыть"
+    },
 
-  "server": {
-    "hostname": "Имя Хоста",
-    "port": "Порт",
-    "label": "Название",
+    "states": {
+        "loading": "Загрузка..."
+    },
 
-    "connecting": "Подключение к ${baseUrl}...",
-    "tryAgain": "Попробовать снова",
-    "errors": {
-      "superpowersJSON": "Не получилось загрузить ${baseUrl}/superpowers.json.",
-      "notSuperpowers": "Похоже, на сервере ${baseUrl} не запущен Superpowers.",
-      "incompatibleVersion": "На сервере ${baseUrl} работает несовместимая версия Superpowers (запущено приложение с API версии ${serverVersion}, необходима ${appVersion})."
+    "server": {
+        "hostname": "Имя Хоста",
+        "port": "Порт",
+        "label": "Название",
+
+        "connecting": "Подключение к ${baseUrl}...",
+        "tryAgain": "Попробовать снова",
+        "errors": {
+            "ValjangEngineJSON": "Не получилось загрузить ${baseUrl}/ValjangEngine.json.",
+            "notValjangEngine": "Похоже, на сервере ${baseUrl} не запущен ValjangEngine.",
+            "incompatibleVersion": "На сервере ${baseUrl} работает несовместимая версия ValjangEngine (запущено приложение с API версии ${serverVersion}, необходима ${appVersion})."
+        }
     }
-  }
 }

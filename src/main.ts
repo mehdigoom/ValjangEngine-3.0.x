@@ -108,7 +108,7 @@ function setupTrayOrDock() {
 
   if (process.platform !== "darwin") {
     trayIcon = new electron.Tray(`${__dirname}/icon-16.png`);
-    trayIcon.setToolTip("Superpowers");
+    trayIcon.setToolTip("ValjangEngine");
     trayIcon.setContextMenu(trayMenu);
     trayIcon.on("double-click", () => { restoreMainWindow(); });
   } else {
@@ -118,7 +118,7 @@ function setupTrayOrDock() {
 
 function setupMainWindow() {
   mainWindow = new electron.BrowserWindow({
-    width: 1000, height: 600, icon: `${__dirname}/superpowers.ico`,
+    width: 1000, height: 600, icon: `${__dirname}/ValjangEngine.ico`,
     minWidth: 800, minHeight: 480,
     useContentSize: true, autoHideMenuBar: true,
     show: false

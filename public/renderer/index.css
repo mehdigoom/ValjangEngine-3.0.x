@@ -497,6 +497,10 @@ html.handle-dragging.horizontal * {
     flex-flow: column
 }
 
+a {
+    color: #FF0000;
+}
+
 .tab-strip>li .location {
     font-size: 10px;
     overflow: hidden;

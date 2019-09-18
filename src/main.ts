@@ -103,7 +103,7 @@ function setupTrayOrDock() {
   ]);
 
   // TODO: Insert 5 most recently used servers
-  // trayMenu.insert(0, new electron.MenuItem({ type: "separator" }));
+ // trayMenu.insert(0, new electron.MenuItem({ type: "separator" }));
   // trayMenu.insert(0, new electron.MenuItem({ label: "My Server", type: "normal", click: () => {} }));
 
   if (process.platform !== "darwin") {

@@ -14,12 +14,21 @@ const addServerBtn = document.querySelector(".add-server");
 const editServerBtn = document.querySelector(".edit-server");
 const removeServerBtn = document.querySelector(".remove-server");
 const serversTreeView = new TreeView(document.querySelector(".servers-tree-view"), { dropCallback: onServerDrop });
+
 function start() {
     addServer({
+        id: "public",
+        label: "Public",
+        hostname: "public.valjang.fr",
+        port: 4200,
+        password: null
+    });
+    addServer({
         id: "local",
-        label: i18n.t("server:myServer"),
-        hostname: i18n.t("server:autoConfigured"),
-        port: null, password: null
+        label: "local",
+        hostname: "localhost",
+        port: 4200,
+        password: null
     });
     for (const serverEntry of settings.favoriteServers)
         addServer(serverEntry);
@@ -31,6 +40,7 @@ editServerBtn.addEventListener("click", onEditServerClick);
 removeServerBtn.addEventListener("click", onRemoveServerClick);
 serversTreeView.on("selectionChange", updateSelectedServer);
 serversTreeView.on("activate", onServerActivate);
+
 function onAddServerClick(event) {
     const addOrEditOptions = {
         validationLabel: "Add",
@@ -52,6 +62,7 @@ function onAddServerClick(event) {
         settings.scheduleSave();
     });
 }
+
 function onEditServerClick(event) {
     const serverId = serversTreeView.selectedNodes[0].dataset["serverId"];
     if (serverId === "local")
@@ -78,6 +89,7 @@ function onEditServerClick(event) {
         settings.scheduleSave();
     });
 }
+
 function onRemoveServerClick(event) {
     const selectedServerId = serversTreeView.selectedNodes[0].dataset["serverId"];
     if (selectedServerId === "local")
@@ -93,6 +105,7 @@ function onRemoveServerClick(event) {
         settings.scheduleSave();
     });
 }
+
 function addServer(serverEntry) {
     const serverElt = document.createElement("li");
     serverElt.dataset["serverId"] = serverEntry.id;
@@ -107,10 +120,12 @@ function addServer(serverEntry) {
     hostElt.textContent = host;
     serverElt.appendChild(hostElt);
 }
+
 function onServerDrop(event, dropLocation, orderedNodes) {
     // TODO
     return false;
 }
+
 function updateSelectedServer() {
     let canEditSelectedServer = false;
     if (serversTreeView.selectedNodes.length !== 0) {
@@ -120,6 +135,7 @@ function updateSelectedServer() {
     editServerBtn.disabled = !canEditSelectedServer;
     removeServerBtn.disabled = !canEditSelectedServer;
 }
+
 function onServerActivate() {
     if (serversTreeView.selectedNodes.length === 0)
         return;
@@ -134,8 +150,21 @@ function onServerActivate() {
             port: serverSettings.config.mainPort.toString(),
             password: serverSettings.config.password
         };
+    } else {
+        serverEntry = settings.favoriteServersById[serverId];
     }
-    else {
+
+
+    if (serverId === "public") {
+        // Fetch local server config to build up-to-date entry
+        serverEntry = {
+            id: "public",
+            label: "Public",
+            hostname: "public.valjang.fr",
+            port: 4200,
+            password: serverSettings.config.password
+        };
+    } else {
         serverEntry = settings.favoriteServersById[serverId];
     }
     openServer_1.default(serverEntry);

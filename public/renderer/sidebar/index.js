@@ -18,9 +18,9 @@ const serversTreeView = new TreeView(document.querySelector(".servers-tree-view"
 function start() {
     addServer({
         id: "public",
-        label: "Public",
-        hostname: "public.valjang.fr",
-        port: 4200,
+        label: "Public server",
+        hostname: "Valjang Engine public server.",
+        port: null,
         password: null
     });
     addServer({

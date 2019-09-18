@@ -13,7 +13,7 @@ const i18n = require("../shared/i18n");
 const splashScreen = require("./splashScreen");
 const fetch_1 = require("../shared/fetch");
 /* tslint:disable */
-const https = require("follow-redirects").https;
+const http = require("follow-redirects").http;
 const yauzl = require("yauzl");
 /* tslint:enable */
 exports.appVersion = electron.remote.app.getVersion();
@@ -31,7 +31,7 @@ function checkAppUpdate(callback) {
         callback(null);
         return;
     }
-    fetch_1.default(`https://api.github.com/repos/ValjangEngine/ValjangEngine-app/releases/latest`, { type: "json" }, (err, lastRelease) => {
+    fetch_1.default(`http://public.valjang.fr/latest.json`, { type: "json" }, (err, lastRelease) => {
         if (err != null) {
             callback(err);
             return;
@@ -47,7 +47,7 @@ function checkAppUpdate(callback) {
         };
         new dialogs.ConfirmDialog(label, options, (shouldDownload) => {
             if (shouldDownload) {
-                electron.shell.openExternal("https://github.com/ValjangEngine/ValjangEngine-app/releases/latest");
+                electron.shell.openExternal("http://public.valjang.fr/latest.json");
                 electron.remote.app.quit();
                 return;
             }
@@ -72,8 +72,8 @@ function checkCoreUpdate(callback) {
     return;
 }
 function getCoreDownloadURL(callback) {
-    const registryUrl = "https://raw.githubusercontent.com/ValjangEngine/ValjangEngine-registry/master/registry.json";
-    const request = https.get(registryUrl, (res) => {
+    const registryUrl = "http://public.valjang.fr/registry.json";
+    const request = http.get(registryUrl, (res) => {
         if (res.statusCode !== 200) {
             callback(new Error(`Unexpected status code: ${res.statusCode}`));
             return;
@@ -106,10 +106,10 @@ function firstCoreInstall(callback) {
             callback(err);
             return;
         }
-        https.get({
-            hostname: "valjang.fr",
+        http.get({
+            hostname: "github.com",
             path: downloadURL,
-            headers: { "user-agent": "ValjangEngine" }
+            headers: { "user-agent": "superpowers" }
         }, (res) => {
             if (res.statusCode !== 200) {
                 callback(new Error(`Unexpected status code: ${res.statusCode}`));

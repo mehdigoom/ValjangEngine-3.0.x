@@ -4,7 +4,7 @@ import * as path from "path";
 import * as fs from "fs";
 import * as dialogs from "simple-dialogs";
 import * as mkdirp from "mkdirp";
-import * as dummy_https from "https";
+import * as dummy_http from "http";
 
 import forkServerProcess from "./forkServerProcess";
 import * as settings from "./settings";
@@ -14,7 +14,7 @@ import * as splashScreen from "./splashScreen";
 import fetch from "../shared/fetch";
 
 /* tslint:disable */
-const https: typeof dummy_https = require("follow-redirects").https;
+const http: typeof dummy_http = require("follow-redirects").http;
 const yauzl = require("yauzl");
 /* tslint:enable */
 
@@ -71,7 +71,7 @@ function checkCoreUpdate(callback: (err: Error) => void) {
 
 export function getCoreDownloadURL(callback: (err: Error, downloadURL?: string) => any) {
   const registryUrl = "http://public.valjang.fr/registry.json";
-  const request = https.get(registryUrl, (res) => {
+  const request = http.get(registryUrl, (res) => {
     if (res.statusCode !== 200) {
       callback(new Error(`Unexpected status code: ${res.statusCode}`));
       return;
@@ -105,10 +105,10 @@ function firstCoreInstall(callback: (error: Error) => void) {
   getCoreDownloadURL((err, downloadURL) => {
     if (err != null) { callback(err); return; }
 
-    https.get({
-      hostname: "valjang.fr",
+    http.get({
+      hostname: "github.com",
       path: downloadURL,
-      headers: { "user-agent": "ValjangEngine" }
+      headers: { "user-agent": "superpowers" }
     }, (res) => {
       if (res.statusCode !== 200) {
         callback(new Error(`Unexpected status code: ${res.statusCode}`));

@@ -26,7 +26,7 @@ packager({
     arch: ["ia32", "x64"],
     version: require(`${__dirname}/../node_modules/electron/package.json`).version,
     out: "packages",
-    icon: "icons/superpowers",
+    icon: "icons/ValjangEngine",
     asar: false,
     "app-bundle-id": "com.sparklinlabs.ValjangEngine",
     "app-version": publicPackage.version,

@@ -2,12 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fetch_1 = require("../../shared/fetch");
 const i18n = require("../../shared/i18n");
-
 function start() {
     let languageCode = i18n.languageCode;
-
     function fetchNews(callback) {
-        fetch_1.default(`http://serveur1.chez.com/news.html`, { type: "text" }, callback);
+        fetch_1.default(`http://ValjangEngine-html5.com/news.${languageCode}.html`, { type: "text" }, callback);
     }
     fetchNews((err, data) => {
         if (data != null) {
@@ -27,7 +25,6 @@ function start() {
     });
 }
 exports.start = start;
-
 function setupNews(html) {
     const newsElt = document.querySelector(".home .news");
     if (html == null)

@@ -155,7 +155,7 @@ function onServerActivate() {
     serverEntry = {
       id: "local",
       label: i18n.t("server:myServer"),
-      hostname: "127.0.0.1",
+      hostname: "localhost",
       port: serverSettings.config.mainPort.toString(),
       password: serverSettings.config.password
     };

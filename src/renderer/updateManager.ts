@@ -30,7 +30,7 @@ export function checkForUpdates(callback: (err: Error) => void) {
 function checkAppUpdate(callback: (err: Error) => void) {
   if (electron.remote.app.getVersion() === "0.0.0-dev") { callback(null); return; }
 
-  fetch(`http://public.valjang.fr/latest.json`, { type: "json" }, (err, lastRelease) => {
+  fetch(`http://public.valjang.fr/registry.json`, { type: "json" }, (err, lastRelease) => {
     if (err != null) { callback(err); return; }
     if (lastRelease.tag_name === appVersion) { callback(null); return; }
 
@@ -42,7 +42,7 @@ function checkAppUpdate(callback: (err: Error) => void) {
 
     new dialogs.ConfirmDialog(label, options, (shouldDownload) => {
       if (shouldDownload) {
-        electron.shell.openExternal("http://public.valjang.fr/latest.json");
+        electron.shell.openExternal("http://public.valjang.fr/registry.json");
         electron.remote.app.quit();
         return;
       }

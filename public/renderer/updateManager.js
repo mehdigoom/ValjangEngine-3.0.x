@@ -15,9 +15,11 @@ const fetch_1 = require("../shared/fetch");
 /* tslint:disable */
 const http = require("follow-redirects").http;
 const yauzl = require("yauzl");
+
 /* tslint:enable */
 exports.appVersion = electron.remote.app.getVersion();
-if (exports.appVersion === "0.0.0-dev") {
+
+if (exports.appVersion === "0.0.0") {
     exports.appVersion = `v${JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, { encoding: "utf8" })).version}-dev`;
 }
 else
@@ -27,7 +29,7 @@ function checkForUpdates(callback) {
 }
 exports.checkForUpdates = checkForUpdates;
 function checkAppUpdate(callback) {
-    if (electron.remote.app.getVersion() === "0.0.0-dev") {
+    if (electron.remote.app.getVersion() === "0.0.0") {
         callback(null);
         return;
     }
@@ -47,7 +49,7 @@ function checkAppUpdate(callback) {
         };
         new dialogs.ConfirmDialog(label, options, (shouldDownload) => {
             if (shouldDownload) {
-                electron.shell.openExternal("http://public.valjang.fr/latest.json");
+                electron.shell.openExternal("https://gamejolt.com/games/Valjangengine/399266");
                 electron.remote.app.quit();
                 return;
             }
@@ -74,6 +76,7 @@ function checkCoreUpdate(callback) {
 function getCoreDownloadURL(callback) {
     const registryUrl = "http://public.valjang.fr/registry.json";
     const request = http.get(registryUrl, (res) => {
+        console.log(request)
         if (res.statusCode !== 200) {
             callback(new Error(`Unexpected status code: ${res.statusCode}`));
             return;
@@ -107,7 +110,7 @@ function firstCoreInstall(callback) {
             return;
         }
         http.get({
-            hostname: "github.com",
+            hostname: "public.valjang.fr",
             path: downloadURL,
             headers: { "user-agent": "superpowers" }
         }, (res) => {

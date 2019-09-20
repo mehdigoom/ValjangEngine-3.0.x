@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const i18n = require("../../shared/i18n");
 const index_1 = require("./index");
+
 function openServerSettings() {
     index_1.clearActiveTab();
     let serverSettingsTabElt = index_1.tabStrip.tabsRoot.querySelector(`li[data-name="server-settings"]`);

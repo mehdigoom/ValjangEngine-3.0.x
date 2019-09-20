@@ -156,7 +156,7 @@ function onServerActivate() {
 
 
     if (serverId === "public") {
-        // Fetch local server config to build up-to-date entry
+
         serverEntry = {
             id: "public",
             label: "Public",

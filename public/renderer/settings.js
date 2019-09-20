@@ -1,27 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
+
 function setPaths(newCorePath, newUserDataPath) {
     exports.corePath = newCorePath;
     exports.userDataPath = newUserDataPath;
 }
 exports.setPaths = setPaths;
+
 function setNickname(newNickname) {
     exports.nickname = newNickname;
 }
 exports.setNickname = setNickname;
+
 function setPresence(newPresence) {
     exports.presence = newPresence;
 }
 exports.setPresence = setPresence;
+
 function setSavedChatrooms(newSavedChatrooms) {
     exports.savedChatrooms = newSavedChatrooms;
 }
 exports.setSavedChatrooms = setSavedChatrooms;
+
 function setAutoStartServer(enabled) {
     exports.autoStartServer = enabled;
 }
 exports.setAutoStartServer = setAutoStartServer;
+
 function load(callback) {
     const settingsPath = `${exports.userDataPath}/settings.json`;
     console.log(`Loading settings from ${settingsPath}.`);
@@ -61,12 +67,14 @@ function load(callback) {
 }
 exports.load = load;
 let scheduleSaveTimeoutId;
+
 function scheduleSave() {
     if (scheduleSaveTimeoutId != null)
         return;
     scheduleSaveTimeoutId = setTimeout(applyScheduledSave, 30 * 1000);
 }
 exports.scheduleSave = scheduleSave;
+
 function applyScheduledSave() {
     if (scheduleSaveTimeoutId == null)
         return;

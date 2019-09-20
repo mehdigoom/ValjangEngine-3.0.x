@@ -18,6 +18,7 @@ const openToInternetElt = document.getElementById("open-server-to-internet-check
 const passwordRowElt = settingsElt.querySelector("li.password");
 const passwordElt = passwordRowElt.querySelector("input");
 const showOrHidePasswordElt = passwordRowElt.querySelector("button");
+
 function start() {
     exports.config = getServerConfig();
     if (exports.config == null) {
@@ -44,27 +45,29 @@ function start() {
     passwordElt.addEventListener("input", scheduleSave);
     showOrHidePasswordElt.addEventListener("click", onShowOrHidePassword);
     systems.refreshRegistry();
+    console.log("UserData: " + settings.userDataPath)
+    console.log("CoreData: " + settings.corePath)
 }
 exports.start = start;
+
 function enable(enabled) {
     disabledElt.hidden = enabled;
 }
 exports.enable = enable;
+
 function getServerConfig() {
     let defaultConfig;
     try {
         /* tslint:disable */
         defaultConfig = require(`${settings.corePath}/server/config.js`).defaults;
         /* tslint:enable */
-    }
-    catch (err) {
+    } catch (err) {
         return null;
     }
     let localConfig;
     try {
         localConfig = JSON.parse(fs.readFileSync(`${settings.userDataPath}/config.json`, { encoding: "utf8" }));
-    }
-    catch (err) { /* Ignore */ }
+    } catch (err) { /* Ignore */ }
     if (localConfig == null)
         localConfig = {};
     const config = {};
@@ -76,13 +79,16 @@ function getServerConfig() {
     }
     return config;
 }
+
 function onOpenProjectsFolderClick() {
     electron.shell.openExternal(`${settings.userDataPath}/projects/`);
 }
+
 function onChangeAutoStartServer() {
     settings.setAutoStartServer(autoStartServerElt.checked);
     settings.scheduleSave();
 }
+
 function onChangeOpenToInternet() {
     if (openToInternetElt.checked) {
         let password = "";
@@ -95,30 +101,31 @@ function onChangeOpenToInternet() {
         }
         passwordElt.value = password;
         passwordRowElt.hidden = false;
-    }
-    else {
+    } else {
         passwordRowElt.hidden = true;
         passwordElt.value = "";
     }
     scheduleSave();
 }
+
 function onShowOrHidePassword() {
     if (passwordElt.type === "password") {
         passwordElt.type = "text";
         showOrHidePasswordElt.textContent = i18n.t("common:actions.hide");
-    }
-    else {
+    } else {
         passwordElt.type = "password";
         showOrHidePasswordElt.textContent = i18n.t("common:actions.show");
     }
 }
 let scheduleSaveTimeoutId;
+
 function scheduleSave() {
     if (scheduleSaveTimeoutId != null)
         return;
     scheduleSaveTimeoutId = setTimeout(applyScheduledSave, 30 * 1000);
 }
 exports.scheduleSave = scheduleSave;
+
 function applyScheduledSave() {
     if (scheduleSaveTimeoutId == null)
         return;

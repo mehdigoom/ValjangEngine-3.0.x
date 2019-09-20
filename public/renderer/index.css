@@ -593,18 +593,19 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(0, 0, 0, 0.911);
     display: flex;
 }
 
 .dialog form {
     background-color: #fff;
+    color: #222;
     margin: auto;
     padding: .75em;
     width: 450px;
     display: flex;
     flex-flow: column;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.575)
 }
 
 .dialog header {

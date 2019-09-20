@@ -1,27 +1,27 @@
 {
-  "title": "Home",
+    "title": "Home",
 
-  "tagline": "Realizzazione di giochi indie in 2D+3D. Gratis ed open source,&nbsp;<b>finalmente</b>.",
+    "tagline": "Realizzazione di giochi indie in 2D+3D. Gratis ed  ,&nbsp;<b>finalmente</b>.",
 
-  "news": {
-    "couldNotFetch": "Non è stato possibile recuperare le notizie più recenti."
-  },
+    "news": {
+        "couldNotFetch": "Non è stato possibile recuperare le notizie più recenti."
+    },
 
-  "chatrooms": {
-    "title": "Elenco Chatroom",
+    "chatrooms": {
+        "title": "Elenco Chatroom",
 
-    "en": "Inglese",
-    "fr": "Francese"
-  },
+        "en": "Inglese",
+        "fr": "Francese"
+    },
 
-  "links": {
-    "title": "Link",
+    "links": {
+        "title": "Link",
 
-    "documentation": "Documentazione",
-    "forums": "Forum della Community",
-    "patreon": "Patreon",
-    "openSource": "Open Source",
-    "freeAssets": "Asset gratuiti",
-    "teamSpeak": "Server TeamSpeak"
-  }
+        "documentation": "Documentazione",
+        "forums": "Forum della Community",
+        "patreon": "Patreon",
+        "openSource": " ",
+        "freeAssets": "Asset gratuiti",
+        "teamSpeak": "Server TeamSpeak"
+    }
 }

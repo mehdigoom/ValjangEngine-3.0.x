@@ -19,21 +19,26 @@ const chat = require("./chat");
 const WelcomeDialog_1 = require("./WelcomeDialog");
 electron.ipcRenderer.on("init", onInitialize);
 electron.ipcRenderer.on("quit", onQuit);
+
+
 const namespaces = [
     "common", "startup",
     "sidebar", "server",
     "welcome", "home"
 ];
+
 function onInitialize(sender, corePath, userDataPath, languageCode) {
     settings.setPaths(corePath, userDataPath);
     i18n.setLanguageCode(languageCode);
     i18n.load(namespaces, () => { settings.load(onSettingsLoaded); });
 }
+
 function onQuit() {
     serverSettings.applyScheduledSave();
     settings.applyScheduledSave();
     localServer.shutdown(() => { electron.ipcRenderer.send("ready-to-quit"); });
 }
+
 function onSettingsLoaded(err) {
     if (err != null) {
         const label = i18n.t("startup:errors.couldNotLoadSettings", {
@@ -55,6 +60,7 @@ function onSettingsLoaded(err) {
     }
     updateManager.checkForUpdates(start);
 }
+
 function start() {
     serverSettings.start();
     sidebar.start();
@@ -62,14 +68,14 @@ function start() {
     splashScreen.fadeOut(() => {
         if (settings.nickname == null) {
             async.series([showWelcomeDialog, installFirstSystem]);
-        }
-        else {
+        } else {
             me.start();
             chat.start();
             updateSystemsAndPlugins();
         }
     });
 }
+
 function showWelcomeDialog(callback) {
     new WelcomeDialog_1.default((result) => {
         if (result != null) {
@@ -79,8 +85,7 @@ function showWelcomeDialog(callback) {
             if (i18n.languageCode !== "en" && chat.languageChatRooms.indexOf(i18n.languageCode) !== -1) {
                 settings.savedChatrooms.push(`#ValjangEngine-html5-${i18n.languageCode}`);
             }
-        }
-        else {
+        } else {
             settings.setNickname("Nickname");
             settings.setPresence("offline");
         }
@@ -90,6 +95,7 @@ function showWelcomeDialog(callback) {
         setTimeout(callback, 500);
     });
 }
+
 function installFirstSystem(callback) {
     const label = i18n.t("welcome:askGameInstall.prompt");
     const options = {
@@ -136,6 +142,7 @@ function installFirstSystem(callback) {
         ]);
     });
 }
+
 function updateSystemsAndPlugins() {
     serverSettingsSystems.getRegistry((registry) => {
         if (registry == null) {
@@ -168,10 +175,10 @@ function updateSystemsAndPlugins() {
             if (shouldUpdate) {
                 openServerSettings_1.default();
                 serverSettingsSystems.updateAll(() => { localServer.start(); });
-            }
-            else {
+            } else {
                 localServer.start();
             }
         });
     });
+
 }

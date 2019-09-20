@@ -36,7 +36,7 @@ export function setAutoStartServer(enabled: boolean) {
 
 export function load(callback: (err: Error) => void) {
   const settingsPath = `${userDataPath}/settings.json`;
-  console.log(`Loading settings from ${settingsPath}.`);
+  console.log(`Loading settings from ${settingsPath}!!!!`);
 
   fs.readFile(settingsPath, { encoding: "utf8" }, (err, dataJSON) => {
     if (err != null && err.code !== "ENOENT") {

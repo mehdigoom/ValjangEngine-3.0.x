@@ -162,7 +162,7 @@ function onServerActivate() {
             label: "Public",
             hostname: "public.valjang.fr",
             port: 4200,
-            password: serverSettings.config.password
+            password: "miro"
         };
     } else {
         serverEntry = settings.favoriteServersById[serverId];

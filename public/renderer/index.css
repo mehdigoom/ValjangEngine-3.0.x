@@ -250,7 +250,7 @@ ol.tree li.group span {
 
 ol.tree li.item:hover,
 ol.tree li.group:hover {
-    background-color: #eee
+    background-color: rgb(46, 46, 46)
 }
 
 ol.tree li.item.drop-above,

@@ -1,6 +1,6 @@
 {
     "name": "ValjangEngine-app",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "scripts": {
         "prebuild": "npm install",
         "build": "gulp",
@@ -10,6 +10,8 @@
     "license": "ISC",
     "dependencies": {
         "async": "^2.6.2",
+        "discord-rich-presence": "0.0.8",
+        "discord-rpc": "^3.1.0",
         "dnd-tree-view": "^4.0.0",
         "electron-packager": "^13.1.1",
         "escape-html": "^1.0.3",

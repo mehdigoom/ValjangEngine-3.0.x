@@ -7,6 +7,22 @@ const getPaths_1 = require("./getPaths");
 const getLanguageCode_1 = require("./getLanguageCode");
 const SupAppIPC = require("./ipc");
 const url = require("url");
+
+const client = require('discord-rich-presence')('561598172548300820');
+ 
+client.updatePresence({
+  state: 'Je créer un jeu vidéo ! / I create a video game !',
+  details: '>>>http://valjang.fr<<<',
+  startTimestamp: Date.now(),
+  endTimestamp: Date.now() + 1337,
+  largeImageKey: 'snek_large',
+  smallImageKey: 'snek_small',
+  instance: true,
+});
+
+
+
+
 let corePath;
 let userDataPath;
 let mainWindow;
